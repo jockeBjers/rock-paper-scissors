@@ -9,7 +9,13 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let choice = prompt("Enter your choice").toUpperCase();
-    return choice;
+    if(choice === "PAPER" || choice === "ROCK" || choice === "SCISSOR"){
+        return choice;
+    }
+    else{
+        alert("Wrong input, only paper, rock or scissor is valid.")
+        return getHumanChoice();
+    }
 }
 function playRound(getHumanChoice, getComputerChoice) {
 
