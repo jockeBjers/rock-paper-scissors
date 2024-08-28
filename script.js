@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let gamesPlayed = 0;
 
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSOR'];
@@ -7,99 +8,128 @@ function getComputerChoice() {
     return randomElement;
 }
 
-// function getHumanChoice() {
-//     let choice = prompt("Enter your choice").toUpperCase();
-//     if(choice === "PAPER" || choice === "ROCK" || choice === "SCISSOR"){
-//         return choice;
-//     }
-//     else{
-//         alert("Wrong input, only paper, rock or scissor is valid.")
-//         return getHumanChoice();
-//     }
-// }
-
-
 const rock = document.querySelector("#rock");
 rock.addEventListener("click", () => {
-  playRound('ROCK', getComputerChoice())
+    playRound('ROCK', getComputerChoice())
 });
 const paper = document.querySelector("#paper");
 paper.addEventListener("click", () => {
-  playRound('PAPER', getComputerChoice())
+    playRound('PAPER', getComputerChoice())
 });
 const scissor = document.querySelector("#scissor");
 scissor.addEventListener("click", () => {
-  playRound('SCISSOR', getComputerChoice())
+    playRound('SCISSOR', getComputerChoice())
 });
 
+const container = document.querySelector(".container");
+const playerChoice = document.createElement("div");
+const computerChoice = document.createElement("div");
+const results = document.createElement("div");
+const humanCount = document.createElement("div");
+const computerCount = document.createElement("div");
+const finalWinner = document.createElement("div");
 
+playerChoice.textContent = "play! ";
+computerChoice.textContent = "It's your turn!";
+results.textContent = "Best of five wins ";
+humanCount.textContent = "your score: " + humanScore;
+computerCount.textContent = "Computer score: " + computerScore;
+finalWinner.textContent = "Best of five: ";
 
+container.appendChild(playerChoice);
+container.appendChild(computerChoice);
+container.appendChild(results);
+container.appendChild(humanCount);
+container.appendChild(computerCount);
+container.appendChild(finalWinner);
 
+rock.setAttribute("style", "color: black; background: white; font-size: 36px; width: 200px;");
+paper.setAttribute("style", "color: black; background: white; font-size: 36px; width: 200px;");
+scissor.setAttribute("style", "color: black; background: white; font-size: 36px; width: 200px;");
+container.setAttribute("style", "color: black; background: white; font-size: 36px; border: 2px black solid; background: tomato; width: 605px;");
 
 function playRound(getHumanChoice, getComputerChoice) {
 
-    console.log("Your choice: " + getHumanChoice);
-    console.log("Computer choice: " + getComputerChoice);
+    playerChoice.textContent = "Your choice: " + getHumanChoice;
+    computerChoice.textContent = "Computer choice: " + getComputerChoice;
 
     if (getHumanChoice == "ROCK" && getComputerChoice == "SCISSOR") {
-        console.log("You win! rock beats scissor!")
+        results.textContent = "You win! rock beats scissor!";
         ++humanScore;
+        humanCount.textContent = "your score: " + humanScore;
+        computerCount.textContent = "Computer score: " + computerScore;
+        gamesPlayed++;
     }
 
     else if (getHumanChoice == "PAPER" && getComputerChoice == "ROCK") {
-        console.log("You win! Paper beats rock!")
+        results.textContent = "You win! Paper beats rock!";
         ++humanScore;
+        humanCount.textContent = "your score: " + humanScore;
+        computerCount.textContent = "Computer score: " + computerScore;
+        gamesPlayed++;
     }
 
     else if (getHumanChoice == "SCISSOR" && getComputerChoice == "PAPER") {
-        console.log("You win! Scissor beats paper!")
+        results.textContent = "You win! Scissor beats paper!";
         ++humanScore;
+        humanCount.textContent = "your score: " + humanScore;
+        computerCount.textContent = "Computer score: " + computerScore;
+        gamesPlayed++;
     }
 
     if (getComputerChoice == "ROCK" && getHumanChoice == "SCISSOR") {
-        console.log("Computer win! rock beats scissor!")
+        results.textContent = "Computer win! rock beats scissor!";
         ++computerScore;
+        humanCount.textContent = "your score: " + humanScore;
+        computerCount.textContent = "Computer score: " + computerScore;
+        gamesPlayed++;
     }
 
     else if (getComputerChoice == "PAPER" && getHumanChoice == "ROCK") {
-        console.log("Computer win! Paper beats rock!")
+        results.textContent = "Computer win! Paper beats rock!";
         ++computerScore;
+        humanCount.textContent = "your score: " + humanScore;
+        computerCount.textContent = "Computer score: " + computerScore;
+        gamesPlayed++;
     }
 
     else if (getComputerChoice == "SCISSOR" && getHumanChoice == "PAPER") {
-        console.log("Computer win! Scissor beats paper!")
+        results.textContent = "Computer win! Scissor beats paper!";
         ++computerScore;
-
+        humanCount.textContent = "your score: " + humanScore;
+        computerCount.textContent = "Computer score: " + computerScore;
+        gamesPlayed++;
     }
 
     if (getComputerChoice === getHumanChoice) {
-        console.log("It's a tie");
+        results.textContent = "It's a tie";
+        humanCount.textContent = "your score: " + humanScore;
+        computerCount.textContent = "Computer score: " + computerScore;
     }
-    console.log("\n*****\n\n");
 
+    if (gamesPlayed >= 5) {
+        if (humanScore > computerScore) {
+            finalWinner.textContent = "Congratulations! You win!";
+        } else {
+            finalWinner.textContent = "Awwwwwww! You lose!";
+        }
+
+    }
+
+    if (gamesPlayed >= 6) {
+        reset();
+    }
 }
 
-// function playGame() {
+function reset() {
+    humanScore = 0;
+    computerScore = 0;
+    gamesPlayed = 0;
+    playerChoice.textContent = "play!";
+    computerChoice.textContent = "It's your turn!";
 
-//     for (i = 0; i < 5; i++) {
-
-//         const humanSelection = getHumanChoice();
-//         const computerSelection = getComputerChoice();
-//         playRound(humanSelection, computerSelection);
-
-//     }
-
-//     console.log("Score: " + humanScore + " : " + computerScore);
-
-//     if (humanScore > computerScore) {
-//         console.log("Congratulations! You win!")
-//     } else if (computerScore > humanScore) {
-//         console.log("Better luck next time. You lose!")
-//     } else {
-//         console.log("No one wins. It is tied!")
-//     }
-
-// }
-
-// playGame();
-//
+    results.textContent = "result: ";
+    humanCount.textContent = "your score: " + humanScore;
+    computerCount.textContent = "Computer score: " + computerScore;
+    finalWinner.textContent = "Best of five: ";
+}
