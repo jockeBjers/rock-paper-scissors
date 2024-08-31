@@ -13,9 +13,7 @@ body {
 }
 
 .case{
-    color: black;
     background: rgb(255, 252, 57);
-    font-size: 20px;
     border: 2px black solid;
     border-bottom: 0px;
     padding:10px;
@@ -30,7 +28,6 @@ body {
    
 }
 .container {
-    color: black;
     background: white;
     font-size: 20px;
     border: 3px black solid;
@@ -48,8 +45,6 @@ body {
 .choice {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding-bottom: 20px;
     background: rgb(255, 252, 57);
     width: 350px;
     height: 200px;

@@ -111,7 +111,6 @@ function playRound(getHumanChoice, getComputerChoice) {
             finalWinner.textContent = "Awwwwwww! You lose!";
             container.setAttribute("style", "color: black; background: red;");
         }
-
     }
 
     if (gamesPlayed >= 6) {
