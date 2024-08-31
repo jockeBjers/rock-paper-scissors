@@ -43,10 +43,6 @@ container.appendChild(humanCount);
 container.appendChild(computerCount);
 container.appendChild(finalWinner);
 
-rock.setAttribute("style", "color: black; background: white; font-size: 36px; width: 200px;");
-paper.setAttribute("style", "color: black; background: white; font-size: 36px; width: 200px;");
-scissor.setAttribute("style", "color: black; background: white; font-size: 36px; width: 200px;");
-container.setAttribute("style", "color: black; background: white; font-size: 36px; border: 2px black solid; background: tomato; width: 605px;");
 
 function playRound(getHumanChoice, getComputerChoice) {
 
@@ -110,8 +106,10 @@ function playRound(getHumanChoice, getComputerChoice) {
     if (gamesPlayed >= 5) {
         if (humanScore > computerScore) {
             finalWinner.textContent = "Congratulations! You win!";
+            container.setAttribute("style", "color: black; background: green;");
         } else {
             finalWinner.textContent = "Awwwwwww! You lose!";
+            container.setAttribute("style", "color: black; background: red;");
         }
 
     }
@@ -127,7 +125,7 @@ function reset() {
     gamesPlayed = 0;
     playerChoice.textContent = "play!";
     computerChoice.textContent = "It's your turn!";
-
+    container.setAttribute("style", "backgrond: white")
     results.textContent = "result: ";
     humanCount.textContent = "your score: " + humanScore;
     computerCount.textContent = "Computer score: " + computerScore;

@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(250, 185, 173);
+}
+
+.case{
+    color: black;
+    background: rgb(255, 252, 57);
+    font-size: 20px;
+    border: 2px black solid;
+    border-bottom: 0px;
+    padding:10px;
+    width: 350px;
+    height: 300px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+   
+}
+.container {
+    color: black;
+    background: white;
+    font-size: 20px;
+    border: 3px black solid;
+    padding:10px;
+    width: 300px;
+    height: 250px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+}
+
+.choice {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    background: rgb(255, 252, 57);
+    width: 350px;
+    height: 200px;
+    border: 2px black solid;
+    border-top: 0px;
+    box-sizing: border-box;
+    gap:5px;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    
+}
+
+#rock {
+    color: black;
+    background-color: rgb(248, 94, 94);
+    font-size: 14px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    
+}
+#rock:hover{
+    background-color: rgb(180, 24, 24);
+    transition: 0.5s;
+}
+
+#rock:active {
+    background-color: #6d1313;
+    transition: 0s;
+}
+
+#paper {
+    color: black;
+    background-color: rgb(112, 245, 86);
+    font-size: 14px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+#paper:hover {
+    background-color: rgb(62, 129, 50);
+    transition: 0.5s;
+}
+#paper:active {
+    background-color: rgb(17, 48, 11);
+    transition: 0s;
+}
+
+#scissor {
+    color: black;
+    background: rgb(100, 164, 248);
+    font-size: 14px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+#scissor:hover{
+    background-color:  rgb(45, 88, 145);
+    transition: 0.5s;
+}
+
+#scissor:active {
+    background-color:rgb(22, 48, 82);
+    transition: 0s;
+}
