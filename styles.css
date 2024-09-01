@@ -9,72 +9,62 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(250, 185, 173);
+    background-color: rgb(250, 208, 173);
 }
 
-.case{
-    background: rgb(255, 252, 57);
+.case {
+    background: rgb(255, 228, 78);
     border: 2px black solid;
-    padding:10px;
     width: 350px;
     height: 500px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     border-top-left-radius: 5%;
     border-top-right-radius: 5%;
     border-bottom-left-radius: 5%;
     border-bottom-right-radius: 5%;
     padding-top: 20px;
-    gap:20px;
-   
 }
-p{
-    font-size: 30px;
-    padding-top: 10px;
+
+p {
+    font-size: 33px;
+ 
 }
+
 .container {
     background: white;
     font-size: 20px;
     border: 3px black solid;
-    padding:10px;
+    padding: 10px;
     width: 300px;
     height: 220px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-
 }
 
 .choice {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    background: rgb(255, 252, 57);
-    width: 350px;
     height: 100px;
-    border: 2px black solid;
-    border-top: 0px;
-    border-bottom: 0px;
-    box-sizing: border-box;
-    gap:5px;
-    
-    
+    gap: 25px;
 }
 
-#rock {
-    color: black;
-    background-color: rgb(248, 94, 94);
+.choices{
     font-size: 50px;
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    
 }
-#rock:hover{
+#rock {
+    background-color: rgb(248, 94, 94);
+}
+
+#rock:hover {
     background-color: rgb(180, 24, 24);
     transition: 0.5s;
 }
@@ -85,57 +75,58 @@ p{
 }
 
 #paper {
-    color: black;
     background-color: rgb(112, 245, 86);
-    font-size: 50px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
 }
 
 #paper:hover {
     background-color: rgb(62, 129, 50);
     transition: 0.5s;
 }
+
 #paper:active {
     background-color: rgb(17, 48, 11);
     transition: 0s;
 }
 
 #scissor {
-    color: black;
     background: rgb(100, 164, 248);
-    font-size: 50px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
 }
-#scissor:hover{
-    background-color:  rgb(45, 88, 145);
+
+#scissor:hover {
+    background-color: rgb(45, 88, 145);
     transition: 0.5s;
 }
 
 #scissor:active {
-    background-color:rgb(22, 48, 82);
+    background-color: rgb(22, 48, 82);
     transition: 0s;
 }
 
-#reset {
-    color: rgb(211, 206, 206);
-    background: rgb(93, 101, 110);
-    font-size: 20px;
-    font-weight: bold;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+.bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    width: 300px;
 }
 
-#reset:hover{
-    background-color:  rgb(0, 0, 0);
+.bottom #reset {
+    color: rgb(211, 206, 206);
+    background: rgb(93, 101, 110);
+    font-size: 15px;
+    font-weight: bold;
+    padding:10px;
+    border-radius: 5%;
+    align-self: flex-start;
+}
+
+#reset:hover {
+    background-color: rgb(0, 0, 0);
     transition: 0.5s;
 }
 
 #reset:active {
-    background-color:rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
     transition: 0s;
 }
