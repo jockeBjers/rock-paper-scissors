@@ -21,6 +21,10 @@ scissor.addEventListener("click", () => {
     playRound('SCISSOR', getComputerChoice())
 });
 
+const resetGame = document.querySelector("#reset");
+resetGame.addEventListener("click", () => {
+    reset();
+});
 const container = document.querySelector(".container");
 const playerChoice = document.createElement("div");
 const computerChoice = document.createElement("div");
@@ -55,6 +59,7 @@ function playRound(getHumanChoice, getComputerChoice) {
         humanCount.textContent = "your score: " + humanScore;
         computerCount.textContent = "Computer score: " + computerScore;
         gamesPlayed++;
+        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
     else if (getHumanChoice == "PAPER" && getComputerChoice == "ROCK") {
@@ -63,6 +68,7 @@ function playRound(getHumanChoice, getComputerChoice) {
         humanCount.textContent = "your score: " + humanScore;
         computerCount.textContent = "Computer score: " + computerScore;
         gamesPlayed++;
+        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
     else if (getHumanChoice == "SCISSOR" && getComputerChoice == "PAPER") {
@@ -71,6 +77,7 @@ function playRound(getHumanChoice, getComputerChoice) {
         humanCount.textContent = "your score: " + humanScore;
         computerCount.textContent = "Computer score: " + computerScore;
         gamesPlayed++;
+        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
     if (getComputerChoice == "ROCK" && getHumanChoice == "SCISSOR") {
@@ -79,6 +86,7 @@ function playRound(getHumanChoice, getComputerChoice) {
         humanCount.textContent = "your score: " + humanScore;
         computerCount.textContent = "Computer score: " + computerScore;
         gamesPlayed++;
+        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
     else if (getComputerChoice == "PAPER" && getHumanChoice == "ROCK") {
@@ -87,6 +95,7 @@ function playRound(getHumanChoice, getComputerChoice) {
         humanCount.textContent = "your score: " + humanScore;
         computerCount.textContent = "Computer score: " + computerScore;
         gamesPlayed++;
+        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
     else if (getComputerChoice == "SCISSOR" && getHumanChoice == "PAPER") {
@@ -95,37 +104,46 @@ function playRound(getHumanChoice, getComputerChoice) {
         humanCount.textContent = "your score: " + humanScore;
         computerCount.textContent = "Computer score: " + computerScore;
         gamesPlayed++;
+        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
     if (getComputerChoice === getHumanChoice) {
         results.textContent = "It's a tie";
         humanCount.textContent = "your score: " + humanScore;
         computerCount.textContent = "Computer score: " + computerScore;
+        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
     if (gamesPlayed >= 5) {
         if (humanScore > computerScore) {
             finalWinner.textContent = "Congratulations! You win!";
-            container.setAttribute("style", "color: black; background: green;");
+            container.setAttribute("style", "color: black; background: lightgreen;");
+            rock.setAttribute("disabled", 1);
+            paper.setAttribute("disabled", 1);
+            scissor.setAttribute("disabled", 1);
+
         } else {
             finalWinner.textContent = "Awwwwwww! You lose!";
             container.setAttribute("style", "color: black; background: red;");
+            rock.setAttribute("disabled", 1);
+            paper.setAttribute("disabled", 1);
+            scissor.setAttribute("disabled", 1);
         }
     }
 
-    if (gamesPlayed >= 6) {
-        reset();
-    }
 }
 
 function reset() {
     humanScore = 0;
     computerScore = 0;
     gamesPlayed = 0;
+    rock.removeAttribute("disabled");
+    paper.removeAttribute("disabled");
+    scissor.removeAttribute("disabled");
     playerChoice.textContent = "play!";
     computerChoice.textContent = "It's your turn!";
     container.setAttribute("style", "backgrond: white")
-    results.textContent = "result: ";
+    results.textContent = "Best of five wins ";
     humanCount.textContent = "your score: " + humanScore;
     computerCount.textContent = "Computer score: " + computerScore;
     finalWinner.textContent = "Best of five: ";
