@@ -2,6 +2,14 @@ let humanScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
 
+const container = document.querySelector(".container");
+const playerChoice = document.createElement("div");
+const computerChoice = document.createElement("div");
+const results = document.createElement("div");
+const humanCount = document.createElement("div");
+const computerCount = document.createElement("div");
+const finalWinner = document.createElement("div");
+
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSOR'];
     const randomElement = choices[Math.floor(Math.random() * choices.length)];
@@ -25,13 +33,6 @@ const resetGame = document.querySelector("#reset");
 resetGame.addEventListener("click", () => {
     reset();
 });
-const container = document.querySelector(".container");
-const playerChoice = document.createElement("div");
-const computerChoice = document.createElement("div");
-const results = document.createElement("div");
-const humanCount = document.createElement("div");
-const computerCount = document.createElement("div");
-const finalWinner = document.createElement("div");
 
 playerChoice.textContent = "play! ";
 computerChoice.textContent = "It's your turn!";
@@ -113,24 +114,42 @@ function playRound(getHumanChoice, getComputerChoice) {
         computerCount.textContent = "Computer score: " + computerScore;
         finalWinner.textContent = "Current round: " + gamesPlayed;
     }
+    calc();
+
+}
+
+function calc() {
+    if (gamesPlayed >= 3 && humanScore === 3) {
+        humanWinner();
+    }
+    if (gamesPlayed >= 3 && computerScore === 3) {
+        computerWinner();
+    }
 
     if (gamesPlayed >= 5) {
         if (humanScore > computerScore) {
-            finalWinner.textContent = "Congratulations! You win!";
-            container.setAttribute("style", "color: black; background: lightgreen;");
-            rock.setAttribute("disabled", 1);
-            paper.setAttribute("disabled", 1);
-            scissor.setAttribute("disabled", 1);
-
-        } else {
-            finalWinner.textContent = "Awwwwwww! You lose!";
-            container.setAttribute("style", "color: black; background: red;");
-            rock.setAttribute("disabled", 1);
-            paper.setAttribute("disabled", 1);
-            scissor.setAttribute("disabled", 1);
+            humanWinner();
+        }
+        else {
+            computerWinner();
         }
     }
+}
 
+function humanWinner() {
+    finalWinner.textContent = "Congratulations! You win!";
+    container.setAttribute("style", "color: black; background: lightgreen;");
+    rock.setAttribute("disabled", 1);
+    paper.setAttribute("disabled", 1);
+    scissor.setAttribute("disabled", 1);
+}
+
+function computerWinner() {
+    finalWinner.textContent = "Awwwwwww! You lose!";
+    container.setAttribute("style", "color: black; background: red;");
+    rock.setAttribute("disabled", 1);
+    paper.setAttribute("disabled", 1);
+    scissor.setAttribute("disabled", 1);
 }
 
 function reset() {
