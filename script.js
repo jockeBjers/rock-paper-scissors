@@ -1,6 +1,8 @@
 let humanScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
+const winningScore = 3;
+const maxRounds = 5;
 
 const container = document.querySelector(".container");
 const playerChoice = document.createElement("div");
@@ -10,11 +12,6 @@ const humanCount = document.createElement("div");
 const computerCount = document.createElement("div");
 const finalWinner = document.createElement("div");
 
-function getComputerChoice() {
-    const choices = ['ROCK', 'PAPER', 'SCISSOR'];
-    const randomElement = choices[Math.floor(Math.random() * choices.length)];
-    return randomElement;
-}
 
 const rock = document.querySelector("#rock");
 rock.addEventListener("click", () => {
@@ -34,6 +31,7 @@ resetGame.addEventListener("click", () => {
     reset();
 });
 
+
 playerChoice.textContent = "play! ";
 computerChoice.textContent = "It's your turn!";
 results.textContent = "Best of five wins ";
@@ -49,87 +47,58 @@ container.appendChild(computerCount);
 container.appendChild(finalWinner);
 
 
+function getComputerChoice() {
+    const choices = ['ROCK', 'PAPER', 'SCISSOR'];
+    const randomElement = choices[Math.floor(Math.random() * choices.length)];
+    return randomElement;
+}
+
 function playRound(getHumanChoice, getComputerChoice) {
 
     playerChoice.textContent = "Your choice: " + getHumanChoice;
     computerChoice.textContent = "Computer choice: " + getComputerChoice;
 
-    if (getHumanChoice == "ROCK" && getComputerChoice == "SCISSOR") {
-        results.textContent = "You win! rock beats scissor!";
+    if ((getHumanChoice === "ROCK" && getComputerChoice === "SCISSOR") ||
+        (getHumanChoice === "PAPER" && getComputerChoice === "ROCK") ||
+        (getHumanChoice === "SCISSOR" && getComputerChoice === "PAPER")) {
+
+        results.textContent = `You win! ${getHumanChoice} beats ${getComputerChoice}!`;
         ++humanScore;
-        humanCount.textContent = "your score: " + humanScore;
-        computerCount.textContent = "Computer score: " + computerScore;
-        gamesPlayed++;
-        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
-    else if (getHumanChoice == "PAPER" && getComputerChoice == "ROCK") {
-        results.textContent = "You win! Paper beats rock!";
-        ++humanScore;
-        humanCount.textContent = "your score: " + humanScore;
-        computerCount.textContent = "Computer score: " + computerScore;
-        gamesPlayed++;
-        finalWinner.textContent = "Current round: " + gamesPlayed;
+    else if (getComputerChoice === getHumanChoice) {
+        results.textContent = "its a tie";
     }
-
-    else if (getHumanChoice == "SCISSOR" && getComputerChoice == "PAPER") {
-        results.textContent = "You win! Scissor beats paper!";
-        ++humanScore;
-        humanCount.textContent = "your score: " + humanScore;
-        computerCount.textContent = "Computer score: " + computerScore;
-        gamesPlayed++;
-        finalWinner.textContent = "Current round: " + gamesPlayed;
-    }
-
-    if (getComputerChoice == "ROCK" && getHumanChoice == "SCISSOR") {
-        results.textContent = "Computer win! rock beats scissor!";
+    else {
+        results.textContent = `Computer wins! ${getComputerChoice} beats ${getHumanChoice}!`;
         ++computerScore;
-        humanCount.textContent = "your score: " + humanScore;
-        computerCount.textContent = "Computer score: " + computerScore;
-        gamesPlayed++;
-        finalWinner.textContent = "Current round: " + gamesPlayed;
     }
 
-    else if (getComputerChoice == "PAPER" && getHumanChoice == "ROCK") {
-        results.textContent = "Computer win! Paper beats rock!";
-        ++computerScore;
-        humanCount.textContent = "your score: " + humanScore;
-        computerCount.textContent = "Computer score: " + computerScore;
-        gamesPlayed++;
-        finalWinner.textContent = "Current round: " + gamesPlayed;
-    }
-
-    else if (getComputerChoice == "SCISSOR" && getHumanChoice == "PAPER") {
-        results.textContent = "Computer win! Scissor beats paper!";
-        ++computerScore;
-        humanCount.textContent = "your score: " + humanScore;
-        computerCount.textContent = "Computer score: " + computerScore;
-        gamesPlayed++;
-        finalWinner.textContent = "Current round: " + gamesPlayed;
-    }
-
-    if (getComputerChoice === getHumanChoice) {
-        results.textContent = "It's a tie";
-        humanCount.textContent = "your score: " + humanScore;
-        computerCount.textContent = "Computer score: " + computerScore;
-        finalWinner.textContent = "Current round: " + gamesPlayed;
-    }
+    gamesPlayed++;
     calc();
 
 }
 
+
 function calc() {
-    if (gamesPlayed >= 3 && humanScore === 3) {
+    humanCount.textContent = "your score: " + humanScore;
+    computerCount.textContent = "Computer score: " + computerScore;
+    finalWinner.textContent = "Current round: " + gamesPlayed;
+
+    if (humanScore === winningScore) {
         humanWinner();
     }
-    if (gamesPlayed >= 3 && computerScore === 3) {
+    else if (computerScore === winningScore) {
         computerWinner();
     }
+    if (gamesPlayed >= maxRounds) {
 
-    if (gamesPlayed >= 5) {
-        if (humanScore > computerScore) {
+        if (humanScore === computerScore) {
+            finalWinner.textContent = `It's still a tie after ${gamesPlayed} rounds! Keep playing...`;
+        } 
+        else if (humanScore > computerScore) {
             humanWinner();
-        }
+        } 
         else {
             computerWinner();
         }
@@ -139,29 +108,38 @@ function calc() {
 function humanWinner() {
     finalWinner.textContent = "Congratulations! You win!";
     container.setAttribute("style", "color: black; background: lightgreen;");
-    rock.setAttribute("disabled", 1);
-    paper.setAttribute("disabled", 1);
-    scissor.setAttribute("disabled", 1);
+    disableGame();
 }
 
 function computerWinner() {
     finalWinner.textContent = "Awwwwwww! You lose!";
     container.setAttribute("style", "color: black; background: red;");
-    rock.setAttribute("disabled", 1);
-    paper.setAttribute("disabled", 1);
-    scissor.setAttribute("disabled", 1);
+    disableGame();
+}
+function disableGame() {
+    rock.disabled = true;
+    paper.disabled = true;
+    scissor.disabled = true;
+    rock.classList.add('disabled-button');
+    paper.classList.add('disabled-button');
+    scissor.classList.add('disabled-button');
 }
 
 function reset() {
     humanScore = 0;
     computerScore = 0;
     gamesPlayed = 0;
-    rock.removeAttribute("disabled");
-    paper.removeAttribute("disabled");
-    scissor.removeAttribute("disabled");
+    
+    rock.disabled = false;
+    paper.disabled = false;
+    scissor.disabled = false;
+    rock.classList.remove('disabled-button');
+    paper.classList.remove('disabled-button');
+    scissor.classList.remove('disabled-button');
+
     playerChoice.textContent = "play!";
     computerChoice.textContent = "It's your turn!";
-    container.setAttribute("style", "backgrond: white")
+    container.setAttribute("style", "background: white")
     results.textContent = "Best of five wins ";
     humanCount.textContent = "your score: " + humanScore;
     computerCount.textContent = "Computer score: " + computerScore;
