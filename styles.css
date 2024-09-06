@@ -128,7 +128,7 @@ p {
 }
 
 .disabled-button {
-    background-color: #cccccc25;
+    background-color: #726c6c25;
     color: #8d8d8d;
     cursor: not-allowed;
 }

@@ -91,14 +91,25 @@ function calc() {
     else if (computerScore === winningScore) {
         computerWinner();
     }
+
+    if (gamesPlayed >= 4) {
+        if (humanScore === 2 && computerScore === 0) {
+            humanWinner();
+            return;
+        } else if (computerScore === 2 && humanScore === 0) {
+            computerWinner();
+            return;
+        }
+    }
+
     if (gamesPlayed >= maxRounds) {
 
         if (humanScore === computerScore) {
-            finalWinner.textContent = `It's still a tie after ${gamesPlayed} rounds! Keep playing...`;
-        } 
+            finalWinner.textContent = "Current round: " + gamesPlayed + ` It's still a tie after ${gamesPlayed} rounds! Keep playing...`;
+        }
         else if (humanScore > computerScore) {
             humanWinner();
-        } 
+        }
         else {
             computerWinner();
         }
@@ -106,13 +117,13 @@ function calc() {
 }
 
 function humanWinner() {
-    finalWinner.textContent = "Congratulations! You win!";
+    finalWinner.textContent =  "Current round: " + gamesPlayed + " Congratulations! You win!";
     container.setAttribute("style", "color: black; background: lightgreen;");
     disableGame();
 }
 
 function computerWinner() {
-    finalWinner.textContent = "Awwwwwww! You lose!";
+    finalWinner.textContent =  "Current round: " + gamesPlayed + " Awwwwwww! You lose!";
     container.setAttribute("style", "color: black; background: red;");
     disableGame();
 }
@@ -129,7 +140,7 @@ function reset() {
     humanScore = 0;
     computerScore = 0;
     gamesPlayed = 0;
-    
+
     rock.disabled = false;
     paper.disabled = false;
     scissor.disabled = false;
