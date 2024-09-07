@@ -12,6 +12,19 @@ const humanCount = document.createElement("div");
 const computerCount = document.createElement("div");
 const finalWinner = document.createElement("div");
 
+container.appendChild(playerChoice);
+container.appendChild(computerChoice);
+container.appendChild(results);
+container.appendChild(humanCount);
+container.appendChild(computerCount);
+container.appendChild(finalWinner);
+
+playerChoice.textContent = "play! ";
+computerChoice.textContent = "It's your turn!";
+results.textContent = "Best of five wins ";
+humanCount.textContent = "your score: " + humanScore;
+computerCount.textContent = "Computer score: " + computerScore;
+finalWinner.textContent = "Best of five: ";
 
 const rock = document.querySelector("#rock");
 rock.addEventListener("click", () => {
@@ -30,22 +43,6 @@ const resetGame = document.querySelector("#reset");
 resetGame.addEventListener("click", () => {
     reset();
 });
-
-
-playerChoice.textContent = "play! ";
-computerChoice.textContent = "It's your turn!";
-results.textContent = "Best of five wins ";
-humanCount.textContent = "your score: " + humanScore;
-computerCount.textContent = "Computer score: " + computerScore;
-finalWinner.textContent = "Best of five: ";
-
-container.appendChild(playerChoice);
-container.appendChild(computerChoice);
-container.appendChild(results);
-container.appendChild(humanCount);
-container.appendChild(computerCount);
-container.appendChild(finalWinner);
-
 
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSOR'];
@@ -78,7 +75,6 @@ function playRound(getHumanChoice, getComputerChoice) {
     calc();
 
 }
-
 
 function calc() {
     humanCount.textContent = "your score: " + humanScore;
@@ -131,9 +127,9 @@ function disableGame() {
     rock.disabled = true;
     paper.disabled = true;
     scissor.disabled = true;
-    rock.classList.add('disabled-button');
-    paper.classList.add('disabled-button');
-    scissor.classList.add('disabled-button');
+    rock.setAttribute("style", "background: grey;")
+    paper.setAttribute("style", "background: grey;")
+    scissor.setAttribute("style", "background: grey;")
 }
 
 function reset() {
@@ -144,13 +140,13 @@ function reset() {
     rock.disabled = false;
     paper.disabled = false;
     scissor.disabled = false;
-    rock.classList.remove('disabled-button');
-    paper.classList.remove('disabled-button');
-    scissor.classList.remove('disabled-button');
+    rock.setAttribute("style", "background: #f85e5e;")
+    paper.setAttribute("style", "background: #70f556;")
+    scissor.setAttribute("style", "background: #64a4f8;")
 
     playerChoice.textContent = "play!";
     computerChoice.textContent = "It's your turn!";
-    container.setAttribute("style", "background: white")
+    container.setAttribute("style", "background: white");
     results.textContent = "Best of five wins ";
     humanCount.textContent = "your score: " + humanScore;
     computerCount.textContent = "Computer score: " + computerScore;

@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(250, 208, 173);
+    background-color: #fad0ad;
 }
 
 .case {
@@ -57,7 +57,7 @@ p {
     border-radius: 50%;
 }
 #rock {
-    background-color: rgb(248, 94, 94);
+    background-color: #f85e5e;
 }
 
 #rock:hover {
@@ -71,7 +71,7 @@ p {
 }
 
 #paper {
-    background-color: rgb(112, 245, 86);
+    background-color: #70f556;
 }
 
 #paper:hover {
@@ -85,7 +85,7 @@ p {
 }
 
 #scissor {
-    background: rgb(100, 164, 248);
+    background: #64a4f8;
 }
 
 #scissor:hover {
@@ -127,8 +127,3 @@ p {
     transition: 0s;
 }
 
-.disabled-button {
-    background-color: #726c6c25;
-    color: #8d8d8d;
-    cursor: not-allowed;
-}
