@@ -16,7 +16,7 @@ body {
     background: rgb(255, 228, 78);
     border: 2px black solid;
     width: 350px;
-    height: 500px;
+    height: 580px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -35,11 +35,41 @@ p {
     border: 3px black solid;
     padding: 10px;
     width: 300px;
-    height: 220px;
+    height: 300px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.containerTwo{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.played-round{
+    display:flex;
+    flex-direction: column;
+    
+
+}
+.emoji-player{
+   text-align: center;
+   font-size: 90px;
+   
+   
+}
+
+.emoji-computer{
+   text-align: center;
+    font-size: 90px;
+    
+    
+ }
+.emoji-text{
+   display: flex;
+   justify-content: center;
+   
 }
 
 .choice {

@@ -5,22 +5,33 @@ const winningScore = 3;
 const maxRounds = 5;
 
 const container = document.querySelector(".container");
+const containerTwo = document.querySelector(".containerTwo");
+const playedRound = document.querySelector(".played-round");
+const emojiPlayer = document.querySelector(".emoji-player");
+const emojiComputer = document.querySelector(".emoji-computer");
+
 const playerChoice = document.createElement("div");
 const computerChoice = document.createElement("div");
+
+const playerEmoji = document.createElement("div");
+const computerEmoji = document.createElement("div");
+
 const results = document.createElement("div");
 const humanCount = document.createElement("div");
 const computerCount = document.createElement("div");
 const finalWinner = document.createElement("div");
 
-container.appendChild(playerChoice);
-container.appendChild(computerChoice);
 container.appendChild(results);
 container.appendChild(humanCount);
 container.appendChild(computerCount);
 container.appendChild(finalWinner);
 
-playerChoice.textContent = "play! ";
-computerChoice.textContent = "It's your turn!";
+emojiPlayer.appendChild(playerEmoji);
+emojiComputer.appendChild(computerEmoji);
+
+playerEmoji.innerHTML = '&#9994';
+computerEmoji.innerHTML = '&#9994';
+
 results.textContent = "Best of five wins ";
 humanCount.textContent = "your score: " + humanScore;
 computerCount.textContent = "Computer score: " + computerScore;
@@ -52,8 +63,14 @@ function getComputerChoice() {
 
 function playRound(getHumanChoice, getComputerChoice) {
 
-    playerChoice.textContent = "Your choice: " + getHumanChoice;
-    computerChoice.textContent = "Computer choice: " + getComputerChoice;
+    const textToEmoji = {
+        'ROCK': '&#9994',    // Fist for Rock
+        'PAPER': '&#9995',   // Hand for Paper
+        'SCISSOR': '&#9996' // Scissors for Scissor
+    };
+
+    playerEmoji.innerHTML = `${textToEmoji[getHumanChoice]}`;
+    computerEmoji.innerHTML = `${textToEmoji[getComputerChoice]}`;
 
     if ((getHumanChoice === "ROCK" && getComputerChoice === "SCISSOR") ||
         (getHumanChoice === "PAPER" && getComputerChoice === "ROCK") ||
@@ -144,8 +161,8 @@ function reset() {
     paper.setAttribute("style", "background: #70f556;")
     scissor.setAttribute("style", "background: #64a4f8;")
 
-    playerChoice.textContent = "play!";
-    computerChoice.textContent = "It's your turn!";
+    playerEmoji.innerHTML = '&#9994';
+    computerEmoji.innerHTML = '&#9994';
     container.setAttribute("style", "background: white");
     results.textContent = "Best of five wins ";
     humanCount.textContent = "your score: " + humanScore;
