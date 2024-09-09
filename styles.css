@@ -41,35 +41,33 @@ p {
     flex-direction: column;
     justify-content: space-between;
 }
-
+.score{
+    display: flex;
+    align-items: end;
+    font-size: 25px;
+}
 .containerTwo{
     display: flex;
     justify-content: space-evenly;
-    
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 .played-round{
     display:flex;
     flex-direction: column;
-    
-
 }
 .emoji-player{
    text-align: center;
    font-size: 90px;
-   
-   
 }
 
 .emoji-computer{
    text-align: center;
-    font-size: 90px;
-    
-    
+    font-size: 90px;    
  }
 .emoji-text{
    display: flex;
-   justify-content: center;
-   
+   justify-content: center;  
 }
 
 .choice {
