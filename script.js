@@ -66,16 +66,18 @@ function playRound(getHumanChoice, getComputerChoice) {
     if ((getHumanChoice === "ROCK" && getComputerChoice === "SCISSOR") ||
         (getHumanChoice === "PAPER" && getComputerChoice === "ROCK") ||
         (getHumanChoice === "SCISSOR" && getComputerChoice === "PAPER")) {
-
+        results.setAttribute("style", "color: green;");
         results.textContent = `You win! ${getHumanChoice} beats ${getComputerChoice}!`;
         ++humanScore;
     }
 
     else if (getComputerChoice === getHumanChoice) {
-        results.textContent = "its a tie";
+        results.textContent = "It's a tie!";
+        results.setAttribute("style", "color: grey;");
     }
     else {
         results.textContent = `Computer wins! ${getComputerChoice} beats ${getHumanChoice}!`;
+        results.setAttribute("style", "color: red;");
         ++computerScore;
     }
 
@@ -122,12 +124,14 @@ function calc() {
 function humanWinner() {
     finalWinner.textContent =  "Current round: " + gamesPlayed + " Congratulations! You win!";
     container.setAttribute("style", "color: black; background: lightgreen;");
+    results.setAttribute("style", "color: black;");
     disableGame();
 }
 
 function computerWinner() {
     finalWinner.textContent =  "Current round: " + gamesPlayed + " Awwwwwww! You lose!";
     container.setAttribute("style", "color: black; background: red;");
+    results.setAttribute("style", "color: black;");
     disableGame();
 }
 function disableGame() {
@@ -151,6 +155,7 @@ function reset() {
     paper.setAttribute("style", "background: #70f556;")
     scissor.setAttribute("style", "background: #64a4f8;")
 
+    results.setAttribute("style", "color: black;");
     playerEmoji.innerHTML = '&#9994';
     computerEmoji.innerHTML = '&#9994';
     container.setAttribute("style", "background: white");
