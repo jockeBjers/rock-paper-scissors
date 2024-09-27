@@ -4,7 +4,6 @@ let gamesPlayed = 0;
 const winningScore = 3;
 const maxRounds = 5;
 
-// Mera kommentarer
 const container = document.querySelector(".container");
 const containerTwo = document.querySelector(".containerTwo");
 const playedRound = document.querySelector(".played-round");
@@ -13,19 +12,16 @@ const emojiComputer = document.querySelector(".emoji-computer");
 const emojiText = document.querySelector(".emoji-text");
 const score = document.querySelector(".score");
 
-// Mera kommentarer
 const playerEmoji = document.createElement("div");
 const computerEmoji = document.createElement("div");
 const results = document.createElement("div");
 const finalWinner = document.createElement("div");
 
-// Mera kommentarer
 container.appendChild(results);
 container.appendChild(finalWinner);
 emojiPlayer.appendChild(playerEmoji);
 emojiComputer.appendChild(computerEmoji);
 
-// Mera kommentarer
 playerEmoji.innerHTML = '&#9994';
 computerEmoji.innerHTML = '&#9994';
 results.textContent = "Best of five wins ";
